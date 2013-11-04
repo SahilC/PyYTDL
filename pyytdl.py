@@ -31,6 +31,9 @@ if __name__=='__main__':
 	url=raw_input()
 	vidid=re.search(r'(?i)watch\?.*v=([^\&]*).*', url).group(1)
 	video_info = urlparse.parse_qs(urllib.urlopen(r'http://www.youtube.com/get_video_info?video_id='+ vidid+ "&asv=3&el=detailpage&hl=en_US").read())
+	if video_info['status'][0].lower()!='ok':
+		print 'Cannot download this file'
+		sys.exit(1)
 	video_title = video_info['title'][0]
 	print 'Title: ' + video_title
 	vid_list={}
