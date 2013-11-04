@@ -28,6 +28,7 @@ def download_progress(count, block_size, total_size):
     sys.stdout.write("\r[" + '#' * (percent/2) + '-' * (50 - percent/2)  + "] %3d%% of %d MB" % (percent, total_size/(1024 * 1024)) )
 
 if __name__=='__main__':
+	print 'Input the Youtube URL for Video'
 	url=raw_input()
 	vidid=re.search(r'(?i)watch\?.*v=([^\&]*).*', url).group(1)
 	video_info = urlparse.parse_qs(urllib.urlopen(r'http://www.youtube.com/get_video_info?video_id='+ vidid+ "&asv=3&el=detailpage&hl=en_US").read())
